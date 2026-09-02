@@ -1,0 +1,57 @@
+{
+  "name": "dsh-personalization",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Personalization plugin for the DeepSeek Harness (dsh): teach your assistant who you are, who it is, and how it should behave. Adds a Personalization page to dsh settings (custom instructions, nicknames, persona) and injects the content into every agent turn's system prompt.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "personalization",
+    "persona",
+    "system-prompt"
+  ],
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "assets",
+    "README.md",
+    "README_EN.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "self-test": "node lib/index.js --self-test",
+    "check": "node --check lib/index.js && node --check lib/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazy-L118/dsh-personalization.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  }
+}
